@@ -1,0 +1,36 @@
+[SIMULATION]
+data = ur_fall
+data_path = data
+results_path = results/ur_fall/split_ae/rgb_depth/A0_B0_AB30_label_AB_test_A
+modality_A = rgb
+modality_B = depth
+model_ae = split_LSTM
+model_sv = MLP
+
+[FL]
+train_ratio = 0.11
+train_supervised_ratio = 0.11
+num_clients_A = 0
+num_clients_B = 0
+num_clients_AB = 30
+rounds = 100
+eval_interval = 2
+rep_size = 4
+DCCAE_lamda = 0.01
+
+[SERVER]
+frac = 0.10
+num_epochs = 5
+lr = 0.001
+criterion = CrossEntropyLoss
+optimizer = Adam
+# label_modality can be A, B, or AB
+label_modality = AB
+# test_modality can be A or B
+test_modality = A
+
+[CLIENT]
+num_epochs = 2
+lr = 0.01
+optimizer = Adam
+criterion = MSELoss

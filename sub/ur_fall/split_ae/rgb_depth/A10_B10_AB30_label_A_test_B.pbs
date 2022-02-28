@@ -1,0 +1,13 @@
+#PBS -l walltime=24:00:00
+#PBS -l select=2:ncpus=32:mem=124gb
+#PBS -N ur_fall_sp_rgb_depth_A10_B10_AB30_label_A_test_B
+
+module load anaconda3/personal
+source activate deep-learning
+module load mpi
+
+cd $PBS_O_WORKDIR
+
+mpirun -n 64 python3 src/main.py --config ./config/ur_fall/split_ae/rgb_depth/A10_B10_AB30_label_A_test_B
+
+

@@ -1,0 +1,12 @@
+qsub sub/opp/ablation/A30_B30_AB0_label_A_test_B.pbs
+qsub sub/opp/ablation/A30_B30_AB0_label_B_test_A.pbs
+qsub sub/ur_fall/ablation/acce_depth/A30_B30_AB0_label_A_test_B.pbs
+qsub sub/ur_fall/ablation/acce_depth/A30_B30_AB0_label_B_test_A.pbs
+qsub sub/ur_fall/ablation/rgb_depth/A30_B30_AB0_label_A_test_B.pbs
+qsub sub/ur_fall/ablation/rgb_depth/A30_B30_AB0_label_B_test_A.pbs
+qsub sub/mhealth/ablation/acce_gyro/A30_B30_AB0_label_A_test_B.pbs
+qsub sub/mhealth/ablation/acce_gyro/A30_B30_AB0_label_B_test_A.pbs
+qsub sub/mhealth/ablation/acce_mage/A30_B30_AB0_label_A_test_B.pbs
+qsub sub/mhealth/ablation/acce_mage/A30_B30_AB0_label_B_test_A.pbs
+qsub sub/mhealth/ablation/gyro_mage/A30_B30_AB0_label_A_test_B.pbs
+qsub sub/mhealth/ablation/gyro_mage/A30_B30_AB0_label_B_test_A.pbs

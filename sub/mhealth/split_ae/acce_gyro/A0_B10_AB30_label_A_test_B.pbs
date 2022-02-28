@@ -1,0 +1,13 @@
+#PBS -l walltime=24:00:00
+#PBS -l select=2:ncpus=32:mem=124gb
+#PBS -N mhealth_sp_acce_gyro_A0_B10_AB30_label_A_test_B
+
+module load anaconda3/personal
+source activate deep-learning
+module load mpi
+
+cd $PBS_O_WORKDIR
+
+mpirun -n 64 python3 src/main.py --config ./config/mhealth/split_ae/acce_gyro/A0_B10_AB30_label_A_test_B
+
+

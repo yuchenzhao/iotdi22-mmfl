@@ -1,0 +1,60 @@
+[SIMULATION]
+# Used dataset (opp/mhealth/ur_fall)
+data = ur_fall
+# Path of datasets
+data_path = data
+# Path of output results
+results_path = results/ur_fall/example
+# Modality A and B (acce/gyro for opp, acce/gyro/mage for mhealth, acce/rgb/depth for ur_fall)
+modality_A = rgb
+modality_B = depth
+# Local autoencoder (split_LSTM for SplitAE, DCCAE_LSTM for DCCAE)
+model_ae = split_LSTM
+# Supervised classifier (only supports MLP)
+model_sv = MLP
+
+[FL]
+# Ratio of the training dataset to generate a client's data
+train_ratio = 0.11
+# Ratio of the training dataset to generate a labelled dataset on the server
+train_supervised_ratio = 0.11
+# Number of unimodal clients for modality A
+num_clients_A = 10
+# Number of unimodal clients for modality B
+num_clients_B = 30
+# Number of multimodal clients 
+num_clients_AB = 10
+# Communication rounds of FL
+rounds = 100
+# Round interval for evaluating the global classifier
+eval_interval = 2
+# size of the hidden representation h
+rep_size = 4
+# lamda factor for DCCAE
+DCCAE_lamda = 0.01
+
+[SERVER]
+# Fraction of clients randomly selected by the server
+frac = 0.10
+# Number of epochs for supervised learning on the server
+num_epochs = 5
+# Learning rate for supervised learning on the server
+lr = 0.001
+# Loss function for supervised learning (only supports CrossEntropyLoss)
+criterion = CrossEntropyLoss
+# Optimizer for supervised learning (only supports Adam)
+optimizer = Adam
+# Modality of the labelled dataset(s) on the server (A/B/AB)
+label_modality = B
+# Modality of the testing dataset on the server (A/B)
+test_modality = A
+
+[CLIENT]
+# Number of epochs for unsupervised local training on a client
+num_epochs = 2
+# Learning rate for unsupervised local training on a client
+lr = 0.01
+# Optimizer for unsupervised local training (only supports Adam)
+optimizer = Adam
+# Loss function for unsupervised local training (MSELoss for split_LSTM, DCCAELoss for DCCAE_LSTM)
+criterion = DCCAELoss
